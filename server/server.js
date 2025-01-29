@@ -1,5 +1,6 @@
 const http = require('http');
 const fs = require('fs');
+const { buffer } = require('stream/consumers');
 
 const server = http.createServer((req, res) =>{
 
@@ -22,6 +23,17 @@ const server = http.createServer((req, res) =>{
 
     else if(req.url === '/form' && req.method == "POST") {
         fs.writeFileSync('user.text', 'daksh vashishtha');
+        const body  = [];
+        req.on('data', chunk =>{
+            console.log(chunk);
+            body.push(chunk);
+        })
+
+        req.on('end', ()=>{
+            const parsed = Buffer.concat(body).toString();
+            console.log(parsed);
+        })
+
         res.statusCode = 302;
         res.setHeader('location', '/');
         return res.end();
@@ -40,6 +52,8 @@ const server = http.createServer((req, res) =>{
 
         res.write('</body>')
         res.write('</HTML>');
+        return res.end();
+
     }
 
     else{
