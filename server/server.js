@@ -1,8 +1,7 @@
-const http = require('http');
 const fs = require('fs');
 const { buffer } = require('stream/consumers');
 
-const server = http.createServer((req, res) =>{
+ const handler = ((req,res)=>{
 
     if(req.url === '/') {
         res.write('<HTML>');
@@ -79,15 +78,13 @@ const server = http.createServer((req, res) =>{
         res.write('</HTML>')
         return res.end();
     }
-
-
-
 })
 
-const PORT = 5000; 
-server.listen(PORT, ()=>{
-    console.log(`Server running at PORT http://localhost:${PORT}`)
-});
+
+module.exports = handler; //exports the handler function
+
+
+
 
 
 
