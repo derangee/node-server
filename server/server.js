@@ -27,6 +27,21 @@ const server = http.createServer((req, res) =>{
         return res.end();
     }
 
+    else if(req.url === '/nav') {
+        res.write('<HTML>');
+        res.write('<body>');
+
+        res.write('<h3> <a href="/home"> Home </a> </h3> ')
+        res.write('<h3> <a href="/men"> Men </a> </h3> ')
+        res.write('<h3> <a href="/women"> Women </a> </h3> ')
+        res.write('<h3> <a href="/kids"> Kids </a> </h3> ')
+        res.write('<h3> <a href="/cart"> Cart </a> </h3> ')
+
+
+        res.write('</body>')
+        res.write('</HTML>');
+    }
+
     else{
         res.setHeader("Content-Type", 'text/HTML');
         res.write('<HTML>');
