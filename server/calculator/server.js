@@ -56,8 +56,9 @@ const { buffer } = require('stream/consumers');
             const objdata = Buffer.concat(body).toString();
             const params = new URLSearchParams(objdata);
             const bodyobj = Object.fromEntries(params);
-            const result = Number(params.firstnum) + Number(params.secondnum)
-            
+            result = Number(bodyobj.firstnum) + Number(bodyobj.secondnum)
+            res.setHeader("Content-Type", 'text/HTML');
+
             res.write(`
                 <html>
                     <body>
@@ -68,10 +69,6 @@ const { buffer } = require('stream/consumers');
 
             return res.end();
         })
-
-        res.statusCode = 302;
-        res.setHeader('location', '/');
-        return res.end();
     }
 
     else{
