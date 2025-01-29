@@ -1,7 +1,7 @@
 const http = require('http');
-const handler = require('./server');
+const handler = require('./server'); //importing handler function
 
-const server = http.createServer(handler);
+const server = http.createServer(handler); //creating server
 
 
 
