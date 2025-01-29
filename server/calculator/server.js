@@ -4,19 +4,15 @@ const { buffer } = require('stream/consumers');
  const handler = ((req,res)=>{
 
     if(req.url === '/') {
-        res.write('<HTML>');
-        res.write('<body> <h1> Hey </h1> </body> ')
-        res.write('<form method="POST" action ="/form">')
-        res.write('<input type="text" name="username"/>')
-        res.write('<br>');
-        res.write('<label for="male"> Male </label>')
-        res.write('<input type="radio" name="gender" id="male" value="male"/>')
-        res.write('<label for="female"> Female </label>')
-        res.write('<input type="radio" name="gender" id="female" value="female"/>')
-        res.write('<br>');
-        res.write('<input type="submit"/>')
-        res.write('</form>')
-        res.write('</HTML>')
+        res.write(
+            `<HTML>
+                <body> 
+                    <h1> Calculator - using NodeJs! 
+                    <br>
+                    <a href = "/calculator"> Go to Calculator </a>
+                </body> 
+            </HTML>`
+        )
         return res.end();
     }
 
