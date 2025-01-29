@@ -22,17 +22,33 @@ const server = http.createServer((req, res) =>{
     }
 
     else if(req.url === '/form' && req.method == "POST") {
-        fs.writeFileSync('user.text', 'daksh vashishtha');
         const body  = [];
         req.on('data', chunk =>{
-            console.log(chunk);
+            console.log(chunk); //reading chunks  
             body.push(chunk);
         })
 
         req.on('end', ()=>{
-            const parsed = Buffer.concat(body).toString();
+            const parsed = Buffer.concat(body).toString(); //changing the buffer data into string data
             console.log(parsed);
+
+            const obj = {}; // empty object
+            const params = new URLSearchParams(parsed); //changing the string to readable lang 
+
+            for( const[key,value] of params.entries() ) {  //storing data in form of key value pair
+                obj[key] = value;
+            }
+
+            const bodyobj = Object.fromEntries(params); //another way of storing data in objects instead of for loop
+
+            console.log(obj)
+            //console.log(bodyobj); would also give same result
+            fs.writeFileSync('user.txt', JSON.stringify(obj)); //storing data in user.txt
+
+
         })
+
+
 
         res.statusCode = 302;
         res.setHeader('location', '/');
