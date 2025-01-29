@@ -1,12 +1,15 @@
-const https = require('https');
-const server = https.createServer((req, res) =>{
+const http = require('http');
+
+const server = http.createServer((req, res) =>{
     console.log(req);
 })
 
-const PORT = 3000; 
+const PORT = 3001; 
 server.listen(PORT, ()=>{
-    console.log(`Server running at PORT https://localhost:${PORT}`)
-});``
+    console.log(`Server running at PORT http://localhost:${PORT}`)
+});
+
+
 
 
 
