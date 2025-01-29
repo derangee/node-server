@@ -24,6 +24,7 @@ const server = http.createServer((req, res) =>{
         fs.writeFileSync('user.text', 'daksh vashishtha');
         res.statusCode = 302;
         res.setHeader('location', '/');
+        return res.end();
     }
 
     else{
