@@ -74,8 +74,9 @@ const { buffer } = require('stream/consumers');
     else{
         res.setHeader("Content-Type", 'text/HTML');
         res.write('<HTML>');
-        res.write('<body> <h1> Invalid address </h1> </body> ')
+        res.write('<body> <h1> Invalid address 404 </h1> </body> ')
         res.write('</HTML>')
+        
         return res.end();
     }
 })
