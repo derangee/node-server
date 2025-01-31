@@ -8,7 +8,7 @@ const { buffer } = require('stream/consumers');
         res.write(
             `<HTML>
                 <body> 
-                    <h1> Calculator - using NodeJs! </h1>
+                    <h1> Calculator - using Node.Js! </h1>
                     <br>
                     <br>
                     <br>
